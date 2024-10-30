@@ -22,6 +22,8 @@ def home(request):
     }
     return render(request, 'canvas/home.html', context)
 
-
 def about(request):
     return render(request, 'canvas/about.html')
+
+def gallery(request):
+    return render(request, 'canvas/gallery.html')
