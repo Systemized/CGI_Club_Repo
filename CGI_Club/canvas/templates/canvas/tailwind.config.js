@@ -1,0 +1,1 @@
+// The purpose of this file so that tailwindcss intellisense is enabled
