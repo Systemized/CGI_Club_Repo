@@ -1,5 +1,17 @@
 {% extends "canvas/base.html" %}
 
 {% block content %}
-    <h1>Gallery Page!</h1>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="grid gap-4">
+        <div>
+            <img class="h-auto max-w-full rounded-lg shadow" src="{{ duck1.png }}" alt="">
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg shadow" src="{{ duck2.png }}" alt="">
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg shadow" src="{{ duck3.png }}" alt="">
+        </div>
+    </div>
+</div>
 {% endblock content %}

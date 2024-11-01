@@ -17,13 +17,16 @@ posts = [
 ]
 
 def home(request):
-    context = {
-            'posts': posts
-    }
-    return render(request, 'canvas/home.html', context)
+    return render(request, 'canvas/home.html')
 
 def about(request):
     return render(request, 'canvas/about.html')
 
 def gallery(request):
     return render(request, 'canvas/gallery.html')
+
+def feed(request):
+    context = {
+            'posts': posts
+    }
+    return render(request, 'canvas/feed.html', context)

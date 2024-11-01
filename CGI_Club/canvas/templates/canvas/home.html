@@ -1,9 +1,30 @@
 {% extends "canvas/base.html" %}
 
 {% block content%}
-    {% for post in posts %}
-        <h1>{{ post.title }}</h1>
-        <p>By {{ post.author }} on {{ post.date_posted }}</p>
-        <p>{{ post.content }}</p>
-    {% endfor %}
+    
+    <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
+        <div class="grid gap-4">
+            <div class="bg-yellow-500">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam vel assumenda beatae commodi sint aspernatur, consectetur exercitationem eligendi? Ipsa sed magnam maiores quia perferendis commodi repudiandae cumque ab velit quae!</div>
+            <div class="bg-blue-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto tempore ut vero nobis quam molestiae ab magnam qui consequatur voluptas? Commodi architecto illo assumenda porro quis! Atque rem amet tenetur.</div>
+            <div class="bg-green-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam odit adipisci neque aliquam voluptatibus dolore labore explicabo odio deleniti enim qui ullam modi nulla, tempora, et tenetur voluptates eligendi. Dolore.  </div>
+        </div>
+        <div class="grid gap-4">
+            <div class="bg-yellow-500">f</div>
+            <div class="bg-blue-500">f</div>
+            <div class="bg-green-500">f</div>
+        </div>
+        <div class="grid gap-4">
+            <div class="bg-yellow-500">f</div>
+            <div class="bg-blue-500">f</div>
+            <div class="bg-green-500">f</div>
+        </div>
+        <div class="grid gap-4">
+            <div class="bg-yellow-500">f</div>
+            <div class="bg-blue-500">f</div>
+            <div class="bg-green-500">Lorem, ipsum dolor sit amet consectetur adipisicing elit. At aperiam error expedita voluptates molestiae ipsum dolorem officiis vel doloremque minima! Nulla quos debitis dolores commodi, architecto nostrum aspernatur id blanditiis.</div>
+        </div>
+
+        
+    </div>
 {% endblock content%}
+
