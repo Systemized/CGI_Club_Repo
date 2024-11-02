@@ -1,19 +1,23 @@
 {% extends "canvas/base.html" %}
 
 {% block content %}
-<div class="grid grid-cols-5 gap-4 mt-5">
-    <div class="col-span-3">
+<section class="grid grid-cols-3 gap-4 mt-5">
+    <div class="col-span-2">
         {% for post in posts %}
-            <h1 class="text-3xl">{{ post.title }}</h1>
-            <p>By {{ post.author }} on {{ post.date_posted }}</p>
-            <p>{{ post.content }}</p>
+        <div class="border-2 rounded-lg p-3 mb-5 bg-white">
+            <a class="mr-2" href="">{{ post.author }}</a>
+            <small>{{ post.date_posted }}</small>
+            <hr>
+            <h1 class="text-3xl my-2">{{ post.title }}</h1>
+            <p class="mb-2">{{ post.content }}</p>
+        </div>
         {% endfor %}
     </div>
 
-    <div class="col-span-2 p-4 border-2 rounded-lg bg-white">
+    <div class="col-span-1 p-4 border-2 rounded-lg bg-white">
         <h3 class="text-2xl">Our Sidebar</h3>
         <p class="text-sm text-gray-500">You can put any information here you'd like.</p>
-        <div class="mt-4 border border-gray-300 rounded-lg shadow-sm">
+        <div class="mt-4 border border-gray-300 shadow-sm">
             <ul class=" divide-y divide-gray-200 bg-gray-50">
                 <li class="p-3 text-gray-400">Latest Posts</li>
                 <li class="p-3 text-gray-400">Announcements</li>
@@ -22,5 +26,5 @@
             </ul>
         </div>
     </div>
-</div>
+</section>
 {% endblock content %}

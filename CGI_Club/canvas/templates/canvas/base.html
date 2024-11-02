@@ -28,8 +28,8 @@
             </div>
             <!-- Visible on Large Screens, invisible on small -->
             <ul class="hidden md:flex items-center text-white w-1/3 justify-between font-semibold">
-                <li><a href="{% url 'canvas-home' %}">Home</a></li>
                 <li><a href="{% url 'canvas-gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'canvas-feed' %}">Feed</a></li>
                 <li><a href="{% url 'canvas-about' %}">About</a></li>
                 <!-- <li><a href="#">Contact</a></li> -->
             </ul>
@@ -42,8 +42,8 @@
 
         <!-- Hidden Menu, toggable from hamburger manu -->
         <ul id="mobile-menu" class="hidden md:hidden text-white mt-5 space-y-5 flex-col items-center font-semibold">
-            <li class="text-center"><a href="{% url 'canvas-home' %}" class="hover:text-gray-300">Home</a></li>
             <li class="text-center"><a href="{% url 'canvas-gallery' %}" class="hover:text-gray-300">Gallery</a></li>
+            <li class="text-center"><a href="{% url 'canvas-feed' %}" class="hover:text-gray-300">feed</a></li>
             <li class="text-center"><a href="{% url 'canvas-about' %}" class="hover:text-gray-300">About</a></li>
             <!-- <li class="text-center"><a href="#" class="hover:text-gray-300">Contact</a></li> -->
             <li class="text-center">
