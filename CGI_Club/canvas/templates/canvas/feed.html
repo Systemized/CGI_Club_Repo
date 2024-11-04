@@ -1,12 +1,12 @@
 {% extends "canvas/base.html" %}
 
 {% block content %}
-<section class="grid grid-cols-3 gap-4 mt-5">
+<section class="grid grid-cols-3 gap-5 mt-5">
     <div class="col-span-2">
         {% for post in posts %}
-        <div class="border-2 rounded-lg p-3 mb-5 bg-white">
+        <div class="border-2 rounded-lg p-3 mb-4 bg-white">
             <a class="mr-2" href="">{{ post.author }}</a>
-            <small>{{ post.date_posted }}</small>
+            <small>{{ post.date_posted|date:"M d, Y" }}</small>
             <hr>
             <h1 class="text-3xl my-2">{{ post.title }}</h1>
             <p class="mb-2">{{ post.content }}</p>
@@ -14,7 +14,7 @@
         {% endfor %}
     </div>
 
-    <div class="col-span-1 p-4 border-2 rounded-lg bg-white">
+    <div class="col-span-1 self-start p-4 border-2 rounded-lg bg-white ">
         <h3 class="text-2xl">Our Sidebar</h3>
         <p class="text-sm text-gray-500">You can put any information here you'd like.</p>
         <div class="mt-4 border border-gray-300 shadow-sm">

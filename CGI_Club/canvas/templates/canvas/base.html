@@ -17,60 +17,63 @@
     {% endif %}
 </head>
 
-<body class="bg-gray-50">
-    <!-- NAVBAR START -->
-    <!-- <header class="bg-slate-700 p-4 w-full">           may or may not use in future -->
-    <header class="bg-gradient-to-br from-purple-500 via-indigo-500 to-blue-500 p-4 w-full">
-        <nav class="flex justify-between m-auto max-w-screen-md">
-            <!-- Logo -->
-            <div class="text-white ">
-                <img src="CGI_GSU_Logo.png" alt="Logo" class="h-10 size">
-            </div>
-            <!-- Visible on Large Screens, invisible on small -->
-            <ul class="hidden md:flex items-center text-white w-1/3 justify-between font-semibold">
-                <li><a href="{% url 'canvas-gallery' %}">Gallery</a></li>
-                <li><a href="{% url 'canvas-feed' %}">Feed</a></li>
-                <li><a href="{% url 'canvas-about' %}">About</a></li>
-                <!-- <li><a href="#">Contact</a></li> -->
+<body class="bg-gray-50 ">
+    <div {% block homeBG %}{% endblock homeBG %}>
+
+        <!-- NAVBAR START -->
+        <header class="bg-gradient-to-b from-black/70 via-black/40 to-black/5 p-4 w-full">
+        <!-- <header class="bg-gradient-to-br from-purple-500 via-indigo-500 to-teal-400 p-4 w-full"> -->
+            <nav class="flex justify-between m-auto max-w-screen-md">
+                <!-- Logo -->
+                <div class="text-white ">
+                    <a href="{% url 'canvas-home' %}"><img src="{% static 'canvas/ClubLogo.png' %}" alt="Logo" class="h-10 size"></a>
+                </div>
+                <!-- Visible on Large Screens, invisible on small -->
+                <ul class="hidden md:flex items-center text-white w-1/3 justify-between font-semibold">
+                    <li><a href="{% url 'canvas-gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'canvas-feed' %}">Feed</a></li>
+                    <li><a href="{% url 'canvas-about' %}">About</a></li>
+                    <!-- <li><a href="#">Contact</a></li> -->
+                </ul>
+                <a class="items-center hidden md:flex font-semibold" href="#">
+                    <button class=" bg-orange-500 hover:bg-orange-600 rounded-3xl px-6 py-2 text-white">Login</button>
+                </a>
+                <!-- Hamburger Menu -->
+                <button id="menu-btn" class="menu-btn md:hidden fa-solid fa-bars text-3xl text-white"></button>
+            </nav>
+
+            <!-- Hidden Menu, toggable from hamburger manu -->
+            <ul id="mobile-menu" class="hidden md:hidden text-white mt-5 space-y-5 flex-col items-center font-semibold">
+                <li class="text-center"><a href="{% url 'canvas-gallery' %}" class="hover:text-gray-300">Gallery</a>
+                </li>
+                <li class="text-center"><a href="{% url 'canvas-feed' %}" class="hover:text-gray-300">feed</a></li>
+                <li class="text-center"><a href="{% url 'canvas-about' %}" class="hover:text-gray-300">About</a></li>
+                <!-- <li class="text-center"><a href="#" class="hover:text-gray-300">Contact</a></li> -->
+                <li class="text-center">
+                    <a href="#"><button
+                            class="bg-orange-500 hover:bg-orange-600 rounded-3xl px-10 py-2 ">Login</button></a>
+                </li>
             </ul>
-            <a class="items-center hidden md:flex font-semibold" href="#">
-                <button class=" bg-orange-500 hover:bg-orange-600 rounded-3xl px-6 py-2 text-white">Login</button>
-            </a>
-            <!-- Hamburger Menu -->
-            <button id="menu-btn" class="menu-btn md:hidden fa-solid fa-bars text-3xl text-white"></button>
-        </nav>
 
-        <!-- Hidden Menu, toggable from hamburger manu -->
-        <ul id="mobile-menu" class="hidden md:hidden text-white mt-5 space-y-5 flex-col items-center font-semibold">
-            <li class="text-center"><a href="{% url 'canvas-gallery' %}" class="hover:text-gray-300">Gallery</a></li>
-            <li class="text-center"><a href="{% url 'canvas-feed' %}" class="hover:text-gray-300">feed</a></li>
-            <li class="text-center"><a href="{% url 'canvas-about' %}" class="hover:text-gray-300">About</a></li>
-            <!-- <li class="text-center"><a href="#" class="hover:text-gray-300">Contact</a></li> -->
-            <li class="text-center">
-                <a href="#"><button class="bg-orange-500 hover:bg-orange-600 rounded-3xl px-10 py-2 ">Login</button></a>
-            </li>
-        </ul>
+            <script>
+                // Toggle the mobile menu
+                const menuBtn = document.getElementById('menu-btn');
+                const mobileMenu = document.getElementById('mobile-menu');
 
-        <script>
-            // Toggle the mobile menu
-            const menuBtn = document.getElementById('menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        </script>
-    </header>
-    <!-- NAVBAR END -->
-
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            </script>
+        </header>
+        <!-- NAVBAR END -->
+        {% block homeContent%}{% endblock homeContent%}
+    </div>
 
     <section class="mx-4">
         <div class="max-w-screen-md m-auto">
             {% block content%}{% endblock content%}
         </div>
     </section>
-
-    </div>
 </body>
 
 </html>
