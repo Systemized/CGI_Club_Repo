@@ -17,16 +17,17 @@
     {% endif %}
 </head>
 
-<body class="bg-gray-50 ">
+<body class="bg-gray-300 ">
     <div {% block homeBG %}{% endblock homeBG %}>
 
         <!-- NAVBAR START -->
         <header class="bg-gradient-to-b from-black/70 via-black/40 to-black/5 p-4 w-full">
-        <!-- <header class="bg-gradient-to-br from-purple-500 via-indigo-500 to-teal-400 p-4 w-full"> -->
+            <!-- <header class="bg-gradient-to-br from-purple-500 via-indigo-500 to-teal-400 p-4 w-full"> -->
             <nav class="flex justify-between m-auto max-w-screen-md">
                 <!-- Logo -->
                 <div class="text-white ">
-                    <a href="{% url 'canvas-home' %}"><img src="{% static 'canvas/ClubLogo.png' %}" alt="Logo" class="h-10 size"></a>
+                    <a href="{% url 'canvas-home' %}"><img src="{% static 'canvas/ClubLogo.png' %}" alt="Logo"
+                            class="h-10 size"></a>
                 </div>
                 <!-- Visible on Large Screens, invisible on small -->
                 <ul class="hidden md:flex items-center text-white w-1/3 justify-between font-semibold">
@@ -71,6 +72,10 @@
 
     <section class="mx-4">
         <div class="max-w-screen-md m-auto">
+            {% if messages %}
+                {% for message in messages %}
+                    <div>{{ message }}</div>
+            {% endif %}
             {% block content%}{% endblock content%}
         </div>
     </section>

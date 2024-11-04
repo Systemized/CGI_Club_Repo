@@ -1,0 +1,23 @@
+{% extends "canvas/base.html" %}
+
+{% block content%}
+<div class="flex items-center justify-center">
+    <div class="border-2 p-10 bg-gray-200">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-b mb-4 text-4xl">Join Today</legend>
+                {{ form.as_p }}
+            </fieldset>
+            <div class="form-group block"><button
+                    class="px-3 py-1 0 border-2 border-blue-700 rounded-xl text-blue-700" type="submit">Sign
+                    Up</button></div>
+        </form>
+        <div class="border-t pt-3">
+            <small class="text-slate-500">
+                Already have an Account? <a class="ml-2 text-cyan-600" href="#">Sign In</a>
+            </small>
+        </div>
+    </div>
+</div>
+{% endblock content%}
