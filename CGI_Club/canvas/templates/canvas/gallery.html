@@ -1,52 +1,9 @@
 {% extends "canvas/base.html" %}
 
 {% block content %}
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-    <div class="grid gap-4">
-        <div>
-            <img class="h-auto max-w-full rounded-lg shadow" src="{{ duck1.png }}" alt="">
-        </div>
-        <div>
-            <img class="h-auto max-w-full rounded-lg shadow" src="{{ duck2.png }}" alt="">
-        </div>
-        <div>
-            <img class="h-auto max-w-full rounded-lg shadow" src="{{ duck3.png }}" alt="">
-        </div>
-    </div>
-</div>
-
-
-----------------------------------------------------------------------------------------
 <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
-    <div class="grid gap-4">
-        <div class="bg-yellow-500">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam vel assumenda
-            beatae commodi sint aspernatur, consectetur exercitationem eligendi? Ipsa sed magnam maiores quia
-            perferendis commodi repudiandae cumque ab velit quae!</div>
-        <div class="bg-blue-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto tempore ut vero nobis
-            quam molestiae ab magnam qui consequatur voluptas? Commodi architecto illo assumenda porro quis! Atque rem
-            amet tenetur.</div>
-        <div class="bg-green-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam odit adipisci neque
-            aliquam voluptatibus dolore labore explicabo odio deleniti enim qui ullam modi nulla, tempora, et tenetur
-            voluptates eligendi. Dolore. </div>
-    </div>
-    <div class="grid gap-4">
-        <div class="bg-yellow-500">f</div>
-        <div class="bg-blue-500">f</div>
-        <div class="bg-green-500">f</div>
-    </div>
-    <div class="grid gap-4">
-        <div class="bg-yellow-500">f</div>
-        <div class="bg-blue-500">f</div>
-        <div class="bg-green-500">f</div>
-    </div>
-    <div class="grid gap-4">
-        <div class="bg-yellow-500">f</div>
-        <div class="bg-blue-500">f</div>
-        <div class="bg-green-500">Lorem, ipsum dolor sit amet consectetur adipisicing elit. At aperiam error expedita
-            voluptates molestiae ipsum dolorem officiis vel doloremque minima! Nulla quos debitis dolores commodi,
-            architecto nostrum aspernatur id blanditiis.</div>
-    </div>
-
-
+    {% for image in gallery%}
+    <img src="{{ image }}" alt="">
+    {% endfor %}
 </div>
 {% endblock content %}
