@@ -12,9 +12,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
-class Image(models.Model):
-    title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='Image/')
+# class Image(models.Model):
+#     title = models.CharField(max_length=100)
+#     image = models.ImageField(upload_to='Image/')
     
-    def __str__(self):
-        return self.title
+#     def __str__(self):
+#         return self.title
