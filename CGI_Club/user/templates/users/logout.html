@@ -1,6 +1,10 @@
+{% extends "canvas/base.html" %}
 {% load tailwind_filters %}
 {% block content%}
-    <div>
-        
+    <h2 class="text-3xl my-5"> You have logged out</h2>
+    <div class="border-t border-slate-400 pt-3">
+        <small class="text-slate-500">
+            <a class=" text-cyan-600" href="{% url 'login' %}">Login Again</a>
+        </small>
     </div>
 {% endblock content%}

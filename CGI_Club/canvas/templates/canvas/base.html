@@ -21,7 +21,7 @@
     <div {% block homeBG %}{% endblock homeBG %}>
 
         <!-- NAVBAR START -->
-        <header class="bg-gradient-to-b from-black/70 via-black/40 to-black/5 p-4 w-full">
+        <header class="bg-gradient-to-b from-black/70 via-black/50 to-black/20 p-4 w-full">
             <!-- <header class="bg-gradient-to-br from-purple-500 via-indigo-500 to-teal-400 p-4 w-full"> -->
             <nav class="flex justify-between m-auto max-w-screen-md">
                 <!-- Logo -->
@@ -36,9 +36,17 @@
                     <li><a href="{% url 'canvas-about' %}">About</a></li>
                     <!-- <li><a href="#">Contact</a></li> -->
                 </ul>
-                <a class="hidden md:flex font-semibold w-1/3 ml-auto" href="#">
-                    <button class=" bg-orange-500 hover:bg-orange-600 rounded-3xl px-6 py-2 text-white ml-auto">Login</button>
+                {% if user.is_authenticated %}
+                <form class="w-1/3 hidden md:flex" action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button class="text-white hover:text-slate-400 ml-auto" type="submit">Logout</button>
+                </form>
+                {% else %}
+                <a class="hidden md:flex font-semibold w-1/3" href="{% url 'login' %}">
+                    <button
+                        class="bg-orange-500 hover:bg-orange-600 rounded-3xl px-6 py-2 text-white ml-auto">Login</button>
                 </a>
+                {% endif %}
                 <!-- Hamburger Menu -->
                 <button id="menu-btn" class="menu-btn md:hidden fa-solid fa-bars text-3xl text-white"></button>
             </nav>
@@ -51,8 +59,16 @@
                 <li class="text-center"><a href="{% url 'canvas-about' %}" class="hover:text-gray-300">About</a></li>
                 <!-- <li class="text-center"><a href="#" class="hover:text-gray-300">Contact</a></li> -->
                 <li class="text-center">
-                    <a href="#"><button
-                            class="bg-orange-500 hover:bg-orange-600 rounded-3xl px-10 py-2 ">Login</button></a>
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="text-white hover:text-slate-400" type="submit">Logout</button>
+                    </form>
+                    {% else %}
+                    <a href="{% url 'login' %}"></a>
+                    <button class="bg-orange-500 hover:bg-orange-600 rounded-3xl px-10 py-2 ">Login</button>
+                    </a>
+                    {% endif %}
                 </li>
             </ul>
 
@@ -71,11 +87,11 @@
     </div>
 
     <section class="mx-4">
-        <div class="max-w-screen-md m-auto">
+        <div class="max-w-screen-lg m-auto">
             {% if messages %}
-                {% for message in messages %}
-                    <div class="px-3 py-1.5 w-full rounded-lg bg-slate-500 text-white">{{ message }}</div>
-                {% endfor %}
+            {% for message in messages %}
+            <div class="px-3 py-1.5 w-full rounded-lg bg-slate-500 text-white">{{ message }}</div>
+            {% endfor %}
             {% endif %}
             {% block content%}{% endblock content%}
         </div>
