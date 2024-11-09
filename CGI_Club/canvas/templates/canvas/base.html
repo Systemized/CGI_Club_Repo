@@ -25,9 +25,9 @@
             <!-- <header class="bg-gradient-to-br from-purple-500 via-indigo-500 to-teal-400 p-4 w-full"> -->
             <nav class="flex justify-between m-auto max-w-screen-md">
                 <!-- Logo -->
-                <div class="text-white ">
+                <div class="text-white w-1/3 flex">
                     <a href="{% url 'canvas-home' %}"><img src="{% static 'canvas/ClubLogo.png' %}" alt="Logo"
-                            class="h-10 size"></a>
+                            class="h-10"></a>
                 </div>
                 <!-- Visible on Large Screens, invisible on small -->
                 <ul class="hidden md:flex items-center text-white w-1/3 justify-between font-semibold">
@@ -36,8 +36,8 @@
                     <li><a href="{% url 'canvas-about' %}">About</a></li>
                     <!-- <li><a href="#">Contact</a></li> -->
                 </ul>
-                <a class="items-center hidden md:flex font-semibold" href="#">
-                    <button class=" bg-orange-500 hover:bg-orange-600 rounded-3xl px-6 py-2 text-white">Login</button>
+                <a class="hidden md:flex font-semibold w-1/3 ml-auto" href="#">
+                    <button class=" bg-orange-500 hover:bg-orange-600 rounded-3xl px-6 py-2 text-white ml-auto">Login</button>
                 </a>
                 <!-- Hamburger Menu -->
                 <button id="menu-btn" class="menu-btn md:hidden fa-solid fa-bars text-3xl text-white"></button>
@@ -74,7 +74,7 @@
         <div class="max-w-screen-md m-auto">
             {% if messages %}
                 {% for message in messages %}
-                    <div class="p-3x w-full rounded-lg bg-slate-500 text-white">{{ message }}</div>
+                    <div class="px-3 py-1.5 w-full rounded-lg bg-slate-500 text-white">{{ message }}</div>
                 {% endfor %}
             {% endif %}
             {% block content%}{% endblock content%}
