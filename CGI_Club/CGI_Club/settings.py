@@ -132,9 +132,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ------------------------------- Border to Seperate the things I've added -------------------------------
 
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 CRISPY_TEMPLATE_PACK = "tailwind"
 
 LOGIN_REDIRECT_URL = 'canvas-home'
-# MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = '/media/'
+
+LOGIN_URL = 'login'
