@@ -3,18 +3,22 @@
 {% block content %}
 <section class="grid grid-cols-3 gap-5 mt-5">
     <div class="col-span-2">
-        {% for post in posts %}
-        <div class="border-2 border-gray-400 rounded-lg p-3 mb-4 bg-gray-50">
-            <div class="flex items-center">
-                <img class="rounded-full h-7 w-7" src="{{ post.author.profile.image.url }}" alt="">
-                <a class="px-3" href="">{{ post.author }}</a>
-                <small class="w-24">{{ post.date_posted|date:"M d, Y" }}</small>
+        <div class="border-2 rounded-lg p-3 mb-4 bg-white">
+            <div class="flex items-center mb-1 w-full">
+                <img class="rounded-full h-7 w-7 my-1" src="{{ object.author.profile.image.url }}" alt="">
+                <a class="px-3" href="">{{ object.author }}</a>
+                <small class="w-24">{{ object.date_posted|date:"M d, Y" }}</small>
+                {% if object.author == user %}
+                <div class="ml-auto">
+                    <a class="pr-3 text-cyan-500" href="{% url 'post-update' object.id %}">Update</a>
+                    <a class="pr-3 text-red-500" href="{% url 'post-delete' object.id %}">Delete</a>
+                </div>
+                {% endif %}
             </div>
             <hr>
-            <h1 class="text-3xl my-2"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h1>
-            <p class="mb-2">{{ post.content }}</p>
+            <h1 class="text-3xl my-2">{{ object.title }}</h1>
+            <p class="mb-2">{{ object.content }}</p>
         </div>
-        {% endfor %}
     </div>
 
     <div class="col-span-1 self-start p-4 border-2 border-gray-400 rounded-lg bg-gray-50 ">

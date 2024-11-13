@@ -1,4 +1,12 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import (
+    ListView, 
+    DetailView, 
+    CreateView,
+    UpdateView,
+    DeleteView
+)
 from .models import Post
 # Create your views here.
 
@@ -9,11 +17,52 @@ def home(request):
 def about(request):
     return render(request, 'canvas/about.html')
 
-def gallery(request):
-    return render(request, 'canvas/gallery.html')
-
 def feed(request):
     context = {
             'posts': Post.objects.all()
     }
     return render(request, 'canvas/feed.html', context)
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'canvas/feed.html' # <app>/<model>_<viewtype>.html (in this case, it will be (canvas/Post_list))
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+    
+class PostDetailView(DetailView):
+    model = Post
+     
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'content']
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+    fields = ['title', 'content']
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    success_url = '/feed'
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
+
+def gallery(request):
+    return render(request, 'canvas/gallery.html')
