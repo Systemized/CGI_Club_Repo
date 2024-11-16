@@ -4,7 +4,12 @@ from .views import (
     PostDetailView,
     PostCreateView,
     PostUpdateView,
-    PostDeleteView
+    PostDeleteView,
+    
+    ImageListView,
+    ImageDetailView,
+    ImageCreateView,
+    ImageDeleteView,
 )
 from . import views
 
@@ -20,9 +25,12 @@ urlpatterns = [
     path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'),
     # End Post for Feed Page
     
-    path('gallery/', views.gallery, name='canvas-gallery'),
+    path('gallery/', ImageListView.as_view(), name='canvas-gallery'),
     # Images for Gallery Page (Create, delete Images)
-    
+    path('image/<int:pk>/', ImageDetailView.as_view(), name='image-detail'),
+    path('image/new/', ImageCreateView.as_view(), name='image-create'),
+    path('image/<int:pk>/delete', ImageDeleteView.as_view(), name='image-delete'),
+
 
     
 ]

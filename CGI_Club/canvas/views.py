@@ -7,7 +7,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post
+from .models import Post, Image
 # Create your views here.
 
 
@@ -17,6 +17,9 @@ def home(request):
 def about(request):
     return render(request, 'canvas/about.html')
 
+
+# ------------------------------    FEED/POSTS    ------------------------------
+
 def feed(request):
     context = {
             'posts': Post.objects.all()
@@ -25,7 +28,7 @@ def feed(request):
 
 class PostListView(ListView):
     model = Post
-    template_name = 'canvas/feed.html' # <app>/<model>_<viewtype>.html (in this case, it will be (canvas/Post_list))
+    template_name = 'canvas/feed.html' # <app>/<model>_<viewtype>.html (in this case, it will be (canvas/Post_list) originally)
     context_object_name = 'posts'
     ordering = ['-date_posted']
     
@@ -63,6 +66,35 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-
+# ------------------------------    GALLERY/IMAGES    ------------------------------
 def gallery(request):
-    return render(request, 'canvas/gallery.html')
+    context = {
+            'images': Image.objects.all()
+    }
+    return render(request, 'canvas/gallery.html', context)
+
+class ImageListView(ListView):
+    model = Image
+    template_name = 'canvas/gallery.html'
+    context_object_name = 'images'
+    ordering = ['-date_posted']
+
+class ImageDetailView(DetailView):
+    model = Image
+
+class ImageCreateView(LoginRequiredMixin, CreateView):
+    model = Image
+    fields = ['title', 'image'] # IDK if i plan to add content to field. If i do, will need to update models and make migrations
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class ImageDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Image
+    success_url = '/gallery'
+    def test_func(self):
+        image = self.get_object()
+        if self.request.user == image.author:
+            return True
+        return False

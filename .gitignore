@@ -1,3 +1,7 @@
 .env
 
 .DS_Store
+
+
+# my venv below
+cgi_project/ 

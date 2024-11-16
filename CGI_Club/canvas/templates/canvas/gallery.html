@@ -1,9 +1,48 @@
 {% extends "canvas/base.html" %}
 
 {% block content %}
-<div class="grid md:grid-cols-4 grid-cols-2 gap-4">
-    {% for image in gallery%}
-    <img src="{{ image }}" alt="">
+<!-- <div class="grid md:grid-cols-4 grid-cols-2 gap-4 mt-5">
+    {% for image in images%}
+        <a href=""><img src="{{ image.image.url }}" alt="hello"></a>
+        <img src="{{ image.image.url }}" alt="hello">
+    {% endfor %}
+</div> -->
+<div class="grid md:grid-cols-4 grid-cols-2 gap-4 mt-5">
+    {% for image in images %}
+    <img src="{{ image.image.url }}" alt="" class="cursor-pointer"
+        onclick="openImagePopup('{{ image.image.url }}', '{{ image.pk }}')">
     {% endfor %}
 </div>
+
+<!-- Full-size image popup overlay -->
+<div id="image-popup" class="fixed inset-3 flex items-center bg-black bg-opacity-75 justify-center hidden"
+    onclick="closeImagePopup()">
+    <img id="popup-image" class="max-w-full max-h-full">
+    <button onclick="closeImagePopup()" class="absolute top-5 right-5 text-white text-3xl font-bold">&#9746;</button>
+    <a id="popup-link" class="absolute right-5 text-white text-3xl font-bold" href="">&#128269;</a>
+</div>
+
+<!-- JavaScript for handling popup -->
+<script>
+    function openImagePopup(imageUrl, imagePk) {
+        const popup = document.getElementById('image-popup');
+        const popupImage = document.getElementById('popup-image');
+        const popupPk = document.getElementById('popup-link');
+
+        popupImage.src = imageUrl;
+
+        popup.classList.remove('hidden');
+        popupPk.href = `/image/${imagePk}`;
+
+        mainContent.classList.add('pointer-events-none'); // Disable background interactions
+
+    }
+
+    function closeImagePopup() {
+        const popup = document.getElementById('image-popup');
+        popup.classList.add('hidden');
+        mainContent.classList.remove('pointer-events-none'); // Enable background interactions
+
+    }
+</script>
 {% endblock content %}

@@ -22,7 +22,12 @@ class Post(models.Model):
 # Gallery Image Model
 class Image(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='gallery_img')
-    
+    image = models.ImageField(upload_to='gallery_imgs')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_posted = models.DateTimeField(default=timezone.now)
+
     def __str__(self):
         return self.title 
+    
+    def get_absolute_url(self):
+        return reverse('image-detail', kwargs={'pk': self.pk})

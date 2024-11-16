@@ -25,18 +25,15 @@
         <h3 class="text-2xl">User Sidebar</h3>
         {% if user.is_authenticated %}
         <p class="text-sm text-gray-500">Welcome, {{ user.username }}</p>
-        {% endif %}
-        <div class="mt-4 border border-gray-300 shadow-sm">
-            <ul class=" divide-y divide-gray-300 bg-gray-50">
-                {% if user.is_authenticated %}
-                <li class="text-gray-400"><a href="{% url 'post-create' %}" class="block p-3 w-full text-center">Create New Post</a></li>
-                <li class="p-3 text-gray-400">Etc.</li>
-                {% endif %}
-            </ul>
-        </div>
         <ul class="mt-5 divide-y divide-gray-200 bg-gray-50 border-slate-500 border">
-            <li class="text-gray-400"><a href="#" class="block p-3 w-full text-center">Image Upload</a></li>
+            <li class="text-gray-400"><a href="{% url 'post-create' %}" class="block p-3 w-full text-center">Create Post</a></li>
         </ul>
+        <ul class="mt-5 divide-y divide-gray-200 bg-gray-50 border-slate-500 border">
+            <li class="text-gray-400"><a href="{% url 'image-create' %}" class="block p-3 w-full text-center">Upload Img</a></li>
+        </ul>
+        {% else %}
+        <p class="text-sm text-gray-500">Login to Access User Panel</p>
+        {% endif %}
     </div>
 </section>
 {% endblock content %}
