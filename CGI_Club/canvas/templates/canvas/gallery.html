@@ -7,7 +7,7 @@
         <img src="{{ image.image.url }}" alt="hello">
     {% endfor %}
 </div> -->
-<div class="grid md:grid-cols-4 grid-cols-2 gap-4 mt-5">
+<div class="grid md:grid-cols-3 grid-cols-2 gap-4 mt-5">
     {% for image in images %}
     <img src="{{ image.image.url }}" alt="" class="cursor-pointer"
         onclick="openImagePopup('{{ image.image.url }}', '{{ image.pk }}')">
@@ -45,4 +45,30 @@
 
     }
 </script>
+
+
+
+<!-- Pagination -->
+<div>
+    {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <!-- <a class="border-2" href="?page=1">First</a> -->
+                <a class="border-2" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+<!-- Not enough posts for this to be shown. can uncommet if there's alot of post -->
+            <!-- {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a class="border-2 text-slate-700" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a class="border-2 text-slate-500" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %} -->
+
+            {% if page_obj.has_next %}
+                <a class="border-2" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <!-- <a class="border-2" href="?page={{ page_obj.paginator.num_pages }}">Last</a> -->
+            {% endif %}
+        <!-- <div class="w-full text-center"></div> -->
+        {% endif %}
+</div>
 {% endblock content %}

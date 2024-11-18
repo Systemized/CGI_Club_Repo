@@ -31,6 +31,7 @@ class PostListView(ListView):
     template_name = 'canvas/feed.html' # <app>/<model>_<viewtype>.html (in this case, it will be (canvas/Post_list) originally)
     context_object_name = 'posts'
     ordering = ['-date_posted']
+    paginate_by = 10
     
 class PostDetailView(DetailView):
     model = Post
@@ -78,6 +79,7 @@ class ImageListView(ListView):
     template_name = 'canvas/gallery.html'
     context_object_name = 'images'
     ordering = ['-date_posted']
+    paginate_by = 9
 
 class ImageDetailView(DetailView):
     model = Image
