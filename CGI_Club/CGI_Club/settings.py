@@ -20,6 +20,7 @@ env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
+
 environ.Env.read_env(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
@@ -30,15 +31,26 @@ environ.Env.read_env(BASE_DIR / '.env')
 # import os
 # from decouple import config
 # 2 lines above commented out since not using decouple, but environ right now 
-SECRET_KEY = env('SECRET_KEY')
 
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+else:
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
+    SECURE_SSL_REDIRECT = False
+
 ALLOWED_HOSTS = [
     'localhost', '127.0.0.1',
     '3d-art-cgi-gsu.azurewebsites.net',
+    'https://3d-art-cgi-gsu.azurewebsites.net/',
 ]
 
 
@@ -50,12 +62,6 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',     # added for users app
     'crispy_forms',             # crispy forms
     'crispy_tailwind',          # crispy for tailwind
-    
-    # 'django.contrib.sites',     # email vertification, will delete if i can't get it to work
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
-    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,7 +71,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # 'allauth.account.middleware.AccountMiddleware',     # email vertification, will delete if i can't get it to work
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -150,10 +155,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ------------------------------- Border to Seperate the things I've added -------------------------------
 
-#   BEGIN: Lines of code I've added after I ran 'python3 manage.py check --deploy-------------
-
-#   END: Lines of code I've added after I ran 'python3 manage.py check --deploy--------------
-
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
@@ -191,4 +192,4 @@ STORAGES = {
 AZURE_MEDIA_CONTAINER = '3d-art-container'
 AZURE_STATIC_CONTAINER = 'website-static-container'
 AZURE_ACCOUNT_NAME = env('AZURE_ACCOUNT_NAME')
-AZURE_ACCOUNT_KEY=  env('AZURE_ACCOUNT_KEY')
+AZURE_ACCOUNT_KEY = env('AZURE_ACCOUNT_KEY')
