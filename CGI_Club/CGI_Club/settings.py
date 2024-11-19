@@ -41,16 +41,15 @@ DEBUG = False
 if not DEBUG:
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
-    SECURE_SSL_REDIRECT = True
+    # SECURE_SSL_REDIRECT = True
 else:
     CSRF_COOKIE_SECURE = False
     SESSION_COOKIE_SECURE = False
-    SECURE_SSL_REDIRECT = False
+    # SECURE_SSL_REDIRECT = False
 
 ALLOWED_HOSTS = [
     'localhost', '127.0.0.1',
     '3d-art-cgi-gsu.azurewebsites.net',
-    'https://3d-art-cgi-gsu.azurewebsites.net/',
 ]
 
 
@@ -154,6 +153,8 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ------------------------------- Border to Seperate the things I've added -------------------------------
+
+CSRF_TRUSTED_ORIGINS = ['3d-art-cgi-gsu.azurewebsites.net']
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
