@@ -1,37 +1,51 @@
 {% extends "canvas/base.html" %}
 
 {% block content%}
-<section class="mt-10 grid grid-cols-3 gap-10 text-center">
-    <div class="col-span-2 space-y-10">
-        <div class="pb-5">
-            <p class="mb-5 text-lg font-semibold">About</p>
-            <p>The 3D Art and CGI Club at Georgia State University is a space for students to create artwork and
+<section class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 px-6 py-10 bg-gray-50 rounded-lg">
+    <!-- Left Side: About & Purpose -->
+    <div class="col-span-2 space-y-8 text-center md:text-left">
+        <!-- About -->
+        <div class="pb-6">
+            <p class="mb-3 text-xl font-semibold text-indigo-600">About</p>
+            <p class="text-lg text-gray-700">
+                The 3D Art and CGI Club at Georgia State University is a space for students to create artwork and
                 animations in 3D Design spaces, develop their skills, and make connections with other 3D digital
-                artists.</p>
+                artists.
+            </p>
         </div>
-        <div class="pb-5">
-            <p class="my-5 text-lg font-semibold">Organization Purpose Statement:</p>
-            <p>The 3D Art and CGI Club at Georgia State University aims to support 3D artists, helping them form a
-                community and network of support for developing their portfolio and career.</p>
+
+        <!-- Purpose Statement -->
+        <div class="pb-6">
+            <p class="mb-3 text-xl font-semibold text-indigo-600">Organization Purpose Statement:</p>
+            <p class="text-lg text-gray-700">
+                The 3D Art and CGI Club at Georgia State University aims to support 3D artists, helping them form a
+                community and network of support for developing their portfolio and career.
+            </p>
         </div>
     </div>
-    <div>
+
+    <!-- Right Side: Contact -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
         <div class="text-left">
-            <p class="text-lg font-semibold pb-6">Contact</p>
-            <div class="pb-6">
-                <p class="font-semibold">Email:</p>
-                <p>cgiand3dartatgsu@gmail.com</p>
+            <p class="text-xl font-semibold text-indigo-600 pb-6">Contact</p>
+            <!-- Email -->
+            <div class="pb-4">
+                <p class="font-semibold text-gray-800">Email:</p>
+                <p class="text-gray-600">cgiand3dartatgsu<br>@gmail.com</p>
             </div>
-            <div class="pb-6">
-                <p class="font-semibold">Discord:</p>
-                <p>discord.gg/4qGvtP5pE9</p>
+
+            <!-- Discord -->
+            <div class="pb-4">
+                <p class="font-semibold text-gray-800">Discord:</p>
+                <a href="https://discord.gg/4qGvtP5pE9" class="text-gray-600">discord.gg/4qGvtP5pE9</a>
             </div>
-            <div class="pb-6">
-                <p class="font-semibold">Instagram:</p>
-                <p>instagram.com/cgiand3dartatgsu</p>
+
+            <!-- Instagram -->
+            <div class="pb-4">
+                <p class="font-semibold text-gray-800">Instagram:</p>
+                <a href="https://instagram.com/cgiand3dartatgsu" class="text-gray-600">instagram.com/<br>cgiand3dartatgsu</a>
             </div>
         </div>
     </div>
 </section>
-
 {% endblock content%}

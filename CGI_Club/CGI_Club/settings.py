@@ -154,7 +154,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ------------------------------- Border to Seperate the things I've added -------------------------------
 
-CSRF_TRUSTED_ORIGINS = ['3d-art-cgi-gsu.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['https://3d-art-cgi-gsu.azurewebsites.net']
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
