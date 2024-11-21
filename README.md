@@ -14,3 +14,5 @@ Once an account is registered, users will be able to:
     - Delete their own images
 
 ...and more. :D
+
+[https://3D-Art-CGI-GSU.azurewebsites.net]
