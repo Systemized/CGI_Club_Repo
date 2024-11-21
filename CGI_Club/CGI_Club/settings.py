@@ -21,7 +21,7 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 
-environ.Env.read_env(BASE_DIR / '.env')
+environ.Env.read_env(str(BASE_DIR / '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -35,7 +35,7 @@ environ.Env.read_env(BASE_DIR / '.env')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 if not DEBUG:
@@ -156,8 +156,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ['https://3d-art-cgi-gsu.azurewebsites.net']
 
-MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'https://3dartandcgistorage.blob.core.windows.net/3d-art-container/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 CRISPY_TEMPLATE_PACK = "tailwind"
@@ -166,8 +166,8 @@ LOGIN_REDIRECT_URL = 'canvas-home'
 
 LOGIN_URL = 'login'
 
-STATIC_ROOT = BASE_DIR / 'static'
-STATIC_URL = "/static/"
+# STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL = "https://3dartandcgistorage.blob.core.windows.net/website-static-container/"
 
 STORAGES = {
     "default": {
