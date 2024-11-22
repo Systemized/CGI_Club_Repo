@@ -35,17 +35,17 @@ environ.Env.read_env(str(BASE_DIR / '.env'))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 if not DEBUG:
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
-    # SECURE_SSL_REDIRECT = True
-else:
-    CSRF_COOKIE_SECURE = False
-    SESSION_COOKIE_SECURE = False
-    # SECURE_SSL_REDIRECT = False
+    # SECURE_SSL_REDIRECT = True #No need ofr SSL as of yet, since Azure takes care of it. apply when using own domain
+# else:
+#     CSRF_COOKIE_SECURE = False
+#     SESSION_COOKIE_SECURE = False
+#     SECURE_SSL_REDIRECT = False
 
 ALLOWED_HOSTS = [
     'localhost', '127.0.0.1',
@@ -104,11 +104,23 @@ WSGI_APPLICATION = 'CGI_Club.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres",
+        "USER": "postgres.hamuxxtlptscmhyqjynt",
+        "PASSWORD": env('DB_PASSWORD'),
+        "HOST": "aws-0-us-east-1.pooler.supabase.com",
+        "PORT": "6543",
     }
 }
+
+# DATABASES = {
+# 'default': {
+#     'ENGINE': 'django.db.backends.sqlite3',
+#     'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 
 
 # Password validation
