@@ -1,2 +1,5 @@
-# CGI_CLUB_REPO v2.0
-> New branch, rebuilding project with cleaner code
+# CGI_Club_Repo v2.0
+
+> New branch. Will later be set to default
+> Rebuilding project with cleaner code
+
