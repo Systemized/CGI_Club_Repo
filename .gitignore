@@ -1,7 +1,11 @@
 .env
 
-.DS_Store
+*.DS_Store
 
-CGI_Club/.DS_Store
+
 # my venv below
 cgi_project/ 
+
+notes.txt
+venv
+.venv
